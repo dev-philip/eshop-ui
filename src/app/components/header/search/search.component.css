@@ -1,0 +1,31 @@
+.signin-header-text{
+    font-weight: 700;
+   font-family: 'Roboto', sans-serif;
+}
+
+
+.signin-header-text:hover{
+    color: #f6931d;
+}
+
+/* .search-input-field{
+    width: 535px;
+} */
+
+
+
+.search-icon-container{
+    width: 10%;
+}
+
+.search-icon-container i{
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.search-icon-container i:hover{
+    color: #f6931d;
+    /* color: grey; */
+  }
+  
+

@@ -1,0 +1,62 @@
+<div id="myModal" class="modal animate__animated animate__fadeIn">
+    <!-- hello -->
+
+    <div class="main auth-signup">
+      <div class="modal-menubar">
+          <span class="close" title="close" (click)="closeModal()">&times;</span>
+      </div>
+      <p class="sign">Sign Up</p>
+      <form class="form1" [formGroup]="mySignupForm" (ngSubmit)="onSubmit()">
+          <div class="input-container">
+              <span class="input-icon">
+                  <span class="input-error" *ngIf="mySignupForm.get('firstName')!.hasError('required')">Firstname is required</span>
+                  <i class="fa fa-user-o" aria-hidden="true"></i>
+              </span>
+              <input class="un" type="text" id="firstName" formControlName="firstName" placeholder="First Name" />
+          </div>
+          <div class="input-container">
+              <span class="input-icon">
+                <!-- input-success -->
+                <span class="input-error" *ngIf="mySignupForm.get('lastName')!.hasError('required')">Lastname is required</span>
+                  <i class="fa fa-user-o" aria-hidden="true"></i>
+              </span>
+              <input class="un" type="text" formControlName="lastName"  placeholder="Last Name" />
+          </div>
+          <div class="input-container">
+              <span class="input-icon">
+                <span class="input-error" *ngIf="mySignupForm.get('email')!.hasError('required')">Email is required</span>
+                <span class="input-error" *ngIf="mySignupForm.get('email')!.hasError('email')">Invalid email</span>
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              </span>
+              <input class="un" type="email" formControlName="email"  placeholder="Email" />
+          </div>
+          <div class="input-container">
+              <span class="input-icon">
+                <span class="input-error" *ngIf="mySignupForm.get('password')!.hasError('required')">Password is required</span>
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                 <!-- <i class="fa fa-unlock" aria-hidden="true"></i> -->
+              </span>
+              <input class="pass" type="password" formControlName="password"  placeholder="Password" [type]="isPasswordVisible ? 'text' : 'password'" />
+              <span class="eye-password" (click)="togglePasswordVisibility()">
+                
+                <ng-container *ngIf="isPasswordVisible; else showEyeSlash">
+                    <i class="fa fa-eye" aria-hidden="true" title="Hide Password"></i>
+                  </ng-container>
+                  <ng-template #showEyeSlash>
+                    <i class="fa fa-eye-slash" aria-hidden="true" title="Show Password"></i>
+                  </ng-template>
+              </span>
+          </div>
+          <!-- <button type="submit" [disabled]="mySignupForm.invalid" class="submit">Sign Up</button> -->
+          <button class="submit" type="submit" [disabled]="loading">
+            <ng-container *ngIf="!loading; else loadingTemplate">Sign Up</ng-container>
+            <ng-template #loadingTemplate>
+              <i class="fa fa-circle-o-notch fa-spin" style="font-size: 24px;"></i>
+            </ng-template>
+          </button>
+      </form>
+      <p class="signup" (click)="openSignInModal()"><a href="javascript:void(0);">Log In?</a></p> 
+      <p class="forgot"><a href="#">Forgot Password?</a></p>      
+    </div>
+
+</div>

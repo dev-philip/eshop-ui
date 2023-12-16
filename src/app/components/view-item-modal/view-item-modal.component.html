@@ -1,0 +1,55 @@
+<div id="myModal" class="modal animate__animated animate__fadeIn">
+  <div class="modal-content">
+      <div class="modal-menubar">
+          <span class="close" (click)="closeModal()">&times;</span>
+      </div>
+    <hr />
+    <!-- hello -->
+    <div class="container">
+      <div class="row">
+          <div class="col-3">
+              <div class="carouselitemcontainer">
+                  <!-- Start Single Product -->
+                  <div class="single-product">
+                    <div class="product-img">
+                        <a href="javascript:void(0)">
+                            <img class="default-img" [src]="baseUrl + product.defaultImg" alt="#">
+                            <img class="hover-img" [src]="baseUrl + product.hoverImg" alt="#">
+                        </a>
+                    </div>
+                </div>
+                <!-- End Single Product -->
+              
+              </div>
+             
+          </div>
+          <div class="col">
+            <div>
+                <div class="product-info">
+                  <h2>{{ product.productName }}</h2>
+                  <div class="rating-reviews">
+                    <div class="rating">
+                      <span class="star">★★★★☆</span>
+                      <span class="star-text">({{ getRandomInt(1000, 7000) }} customer review)</span>
+                    </div>
+                    <div class="reviews">
+                      <span class="check-icon"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span>
+                      <span *ngIf="product.productCount > 0; else outOfStock">in stock</span>
+                      <ng-template #outOfStock>
+                        <span class="out-of-stock">out of stock</span>
+                      </ng-template>
+                    </div>
+                  </div>
+                  <p>Price: ${{ product.productPrice.toFixed(2) }}</p>
+                  <p>Size: {{ product.size }}</p>
+                  <p>Short Description: {{ product.productDescription }}</p>
+                </div>
+                <div class="add-to-cart">
+                  <button (click)="addToCartHandler()">Add to Cart</button>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>

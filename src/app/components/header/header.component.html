@@ -1,0 +1,47 @@
+	<!-- Header -->
+	<header class="header shop">
+		
+		<app-search></app-search>
+		<!-- Header Inner -->
+		<div class="header-inner">
+			<div class="container"> 
+				<div class="cat-nav-head">
+					<div class="row">
+						<div class="col-lg-3">
+							<div class="all-category">
+								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+								<ul class="main-category animate__animated animate__fadeIn">
+									<li *ngFor="let category of categories">
+										<a [routerLink]="'/category/'+ lowerCase(category.category_name) + '/' + category.id" routerLinkActive="active-link">{{ category.category_name }}</a>
+									</li>
+									<!-- <li><a routerLink="/category/1" routerLinkActive="active-link">sunglass</a></li>-->
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-9 col-12">
+							<div class="menu-area">
+								<!-- Main Menu -->
+								<nav class="navbar navbar-expand-lg">
+									<div class="navbar-collapse">	
+										<div class="nav-inner">	
+											<ul class="nav main-menu menu navbar-nav">
+                                                    <!-- <li routerLink="/home" routerLinkActive="active"><a>Home</a></li> -->
+													<li routerLink="/catalog" routerLinkActive="active"><a>Catalog</a></li>
+                                                    <li routerLink="/products" routerLinkActive="active"><a>Products</a></li>
+													<li routerLink="/checkout" routerLinkActive="active"><a>Checkout</a></li>
+													<!-- <li routerLink="/account" routerLinkActive="active"><a>Account</a></li> -->
+													<li routerLink="/contactus" routerLinkActive="active"><a>Contact Us</a></li>
+												</ul>
+										</div>
+									</div>
+								</nav>
+								<!--/ End Main Menu -->	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Header Inner -->
+	</header>
+	<!--/ End Header -->

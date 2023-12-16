@@ -1,0 +1,268 @@
+<!-- Checkout Area -->
+<div class="checkout-area section animate__animated animate__fadeIn">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="section-title section-title-2">
+                  <h2>Checkout</h2>
+              </div>
+          </div>
+      </div>
+
+      <div class="mt-4">
+
+        <!-- <div class="card mb-4 border shadow-0">
+          <div class="p-4 d-flex justify-content-between">
+            <div class="">
+              <h5>Have an account?</h5>
+              <p class="mb-0 text-wrap ">Sign In / Register To Checkout Faster With Your Saved Details In Your Account</p>
+            </div>
+            <div class="d-flex align-items-center justify-content-center flex-column flex-md-row">
+              <a class="btn btn-outline-primary me-0 me-md-2 mb-2 mb-md-0 w-100">Register</a>
+              <a class="btn btn-primary shadow-0 text-nowrap w-100">Sign in</a>
+            </div>
+          </div>
+        </div> -->
+        
+        <div class="row mt-5">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge text-bg-primary">{{ noOfItemInCart }}</span>
+                </h4>
+                <div >
+                    <ul class="list-group mb-3 sticky-top" *ngIf="(productsInCart$ | async) as cartItems;">
+                        <span *ngIf="hasItemsInCart; else emptyCart">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of cartItems">
+                                <div>
+                                    <i class="fa fa-trash-o click-icon" aria-hidden="true" (click)="removeFromCartHandler(item.productId)"></i>
+                                    <span class="product-name">{{ item.productName }}</span>
+                                </div>
+                                <span class="text-muted">${{ item.productPrice }}</span>
+                            </li>
+                            <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div class="text-success">
+                                    <h6 class="my-0">Promo code</h6>
+                                    <small>EXAMPLECODE</small>
+                                </div>
+                                <span class="text-success">-$5</span>
+                            </li> -->
+                        </span>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong>{{ cartItems.length > 0 ? getTotalPrice(cartItems) : '$0.00' }}</strong>
+                        </li>
+                    </ul>
+                </div>
+               
+                <ng-template #emptyCart>
+                    <!-- Display a message when the cart is empty -->
+                    <p>Your cart is empty.</p> 
+                </ng-template>
+                <form class="card p-2" [formGroup]="myPromoCode" (ngSubmit)="onSubmitPromoCode()">
+                    <div class="input-group">
+                        <input type="text" class="form-control promoCodeInput" placeholder="Promo code"  formControlName="promoCode"  name="promoCode" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary redeemBtn">Redeem</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Shipping Information</h4>
+                <form class="needs-validation" novalidate="" [formGroup]="myShippingInfo" (ngSubmit)="onSubmitShippingForm()">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="custom-label">First Name</label>
+                            <input type="text" class="custom-input" id="firstName" placeholder="Enter your first name" formControlName="firstName" name="firstName">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="custom-label">Last name</label>
+                            <input type="text" class="custom-input" id="lastName" placeholder="Last Name" formControlName="lastName"  name="lastName">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="custom-label">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                            </div>
+                            <input type="text" class="custom-input2" id="username" placeholder="you@example.com" formControlName="email"  name="email">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="custom-label">Address</label>
+                        <input type="text" class="custom-input" id="address" placeholder="1234 Main St" formControlName="address1"  name="address1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address2" class="custom-label">Address 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="custom-input" id="address2" placeholder="Apartment or suite" formControlName="address2"  name="address2">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="country" class="custom-label">Country</label>
+                            <select class="custom-input d-block w-100" id="country" required="" formControlName="country"  name="country">
+                                <option value="">Choose...</option>
+                                <option>United States</option>
+                            </select>
+                            <div class="invalid-feedback"> Please select a valid country. </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state" class="custom-label">State</label>
+                            <select class="custom-input d-block w-100" id="state" required="" formControlName="state"  name="state">
+                                <option value="">Choose...</option>
+                                    <option value="Alabama">Alabama</option>
+                                    <option value="Alaska">Alaska</option>
+                                    <option value="Arizona">Arizona</option>
+                                    <option value="Arkansas">Arkansas</option>
+                                    <option value="California">California</option>
+                                    <option value="Colorado">Colorado</option>
+                                    <option value="Connecticut">Connecticut</option>
+                                    <option value="Delaware">Delaware</option>
+                                    <option value="Florida">Florida</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Hawaii">Hawaii</option>
+                                    <option value="Idaho">Idaho</option>
+                                    <option value="Illinois">Illinois</option>
+                                    <option value="Indiana">Indiana</option>
+                                    <option value="Iowa">Iowa</option>
+                                    <option value="Kansas">Kansas</option>
+                                    <option value="Kentucky">Kentucky</option>
+                                    <option value="Louisiana">Louisiana</option>
+                                    <option value="Maine">Maine</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="Massachusetts">Massachusetts</option>
+                                    <option value="Michigan">Michigan</option>
+                                    <option value="Minnesota">Minnesota</option>
+                                    <option value="Mississippi">Mississippi</option>
+                                    <option value="Missouri">Missouri</option>
+                                    <option value="Montana">Montana</option>
+                                    <option value="Nebraska">Nebraska</option>
+                                    <option value="Nevada">Nevada</option>
+                                    <option value="New Hampshire">New Hampshire</option>
+                                    <option value="New Jersey">New Jersey</option>
+                                    <option value="New Mexico">New Mexico</option>
+                                    <option value="New York">New York</option>
+                                    <option value="North Carolina">North Carolina</option>
+                                    <option value="North Dakota">North Dakota</option>
+                                    <option value="Ohio">Ohio</option>
+                                    <option value="Oklahoma">Oklahoma</option>
+                                    <option value="Oregon">Oregon</option>
+                                    <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Rhode Island">Rhode Island</option>
+                                    <option value="South Carolina">South Carolina</option>
+                                    <option value="South Dakota">South Dakota</option>
+                                    <option value="Tennessee">Tennessee</option>
+                                    <option value="Texas">Texas</option>
+                                    <option value="Utah">Utah</option>
+                                    <option value="Vermont">Vermont</option>
+                                    <option value="Virginia">Virginia</option>
+                                    <option value="Washington">Washington</option>
+                                    <option value="West Virginia">West Virginia</option>
+                                    <option value="Wisconsin">Wisconsin</option>
+                                    <option value="Wyoming">Wyoming</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip" class="custom-label">Zip</label>
+                            <input type="text" class="custom-input" id="zip" placeholder="Zip Code" required="" formControlName="zip"  name="zip">
+                        </div>
+                    </div>
+                    <!-- <hr class="mb-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="same-address">
+                        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="save-info">
+                        <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                    </div> -->
+
+                    <!-- <hr class="mb-4">
+                    <h4 class="mb-3">Billing Address</h4>
+                 
+                    <div class="mb-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                        <div class="invalid-feedback"> Please enter your shipping address. </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="country">Country</label>
+                            <select class="custom-select d-block w-100" id="country" required="">
+                                <option value="">Choose...</option>
+                                <option>United States</option>
+                            </select>
+                            <div class="invalid-feedback"> Please select a valid country. </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state">State</label>
+                            <select class="custom-select d-block w-100" id="state" required="">
+                                <option value="">Choose...</option>
+                                <option>California</option>
+                            </select>
+                            <div class="invalid-feedback"> Please provide a valid state. </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" id="zip" placeholder="" required="">
+                            <div class="invalid-feedback"> Zip code required. </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <hr class="mb-4">
+                    <h4 class="mb-3">Payment</h4>
+                    <div class="d-block my-3">
+                      <div class="form-check form-check-inline">
+                          <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                          <label class="form-check-label" for="credit">Credit card</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                          <label class="form-check-label" for="debit">Debit card</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
+                          <label class="form-check-label" for="paypal">PayPal</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Name on card</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                            <small class="text-muted">Full name as displayed on card</small>
+                            <div class="invalid-feedback"> Name on card is required </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Credit card number</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                            <div class="invalid-feedback"> Credit card number is required </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Expiration</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                            <div class="invalid-feedback"> Expiration date required </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-cvv">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                            <div class="invalid-feedback"> Security code required </div>
+                        </div>
+                    </div> -->
+                    <hr class="mb-4">
+                    <button class="btn btn-lg btn-block orderBtn" type="submit" [disabled]="noOfItemInCart === 0">Complete Order</button>
+                </form>
+            </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+<!-- End Checkout Area -->

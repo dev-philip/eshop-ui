@@ -1,0 +1,53 @@
+<div id="myModal" class="modal animate__animated animate__fadeIn">
+  <!-- hello -->
+
+  <div class="main auth-signin">
+    <div class="modal-menubar">
+        <span class="close" title="close" (click)="closeModal()">&times;</span>
+    </div>
+    <p class="sign">Sign in</p>
+    <form class="form1" [formGroup]="myLoginForm" (ngSubmit)="onSubmit()">
+        <div class="input-container">
+            <span class="input-icon">
+                <span class="input-error" *ngIf="myLoginForm.get('email')!.hasError('required')">Email is required</span>
+                <span class="input-error" *ngIf="myLoginForm.get('email')!.hasError('email')">Please enter a valid email address.</span>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </span>
+            <input class="un" type="email" formControlName="email" placeholder="Email" />
+        </div>
+        <div class="input-container">
+            <span class="input-icon">
+                <span class="input-error" *ngIf="myLoginForm.get('password')!.hasError('required')">Password is required</span>
+                <ng-container *ngIf="loginSuccess; else showOpenPassword">
+                  <i class="fa fa-unlock" aria-hidden="true"></i>
+                </ng-container>
+                <ng-template #showOpenPassword>
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </ng-template>
+            </span>
+            <input class="pass" type="password" formControlName="password"  placeholder="Password" [type]="isPasswordVisible ? 'text' : 'password'" />
+              <span class="eye-password" (click)="togglePasswordVisibility()">
+                
+                <ng-container *ngIf="isPasswordVisible; else showEyeSlash">
+                    <i class="fa fa-eye" aria-hidden="true" title="Hide Password"></i>
+                </ng-container>
+                <ng-template #showEyeSlash>
+                  <i class="fa fa-eye-slash" aria-hidden="true" title="Show Password"></i>
+                </ng-template>
+              </span>
+        </div>
+        <button type="submit" class="submit" [disabled]="loading">
+          <span *ngIf="!loading">Sign in</span>
+          <span *ngIf="loading"><i class="fa fa-circle-o-notch fa-spin" style="font-size: 24px;"></i></span>
+        </button>
+    </form>
+    <p class="signup" (click)="openSignupModal()"><a href="javascript:void(0);">Signup?</a></p> 
+    <p class="forgot"><a href="#">Forgot Password?</a></p>     
+    
+                <button (click)="getTokens()">Get Token</button>
+                <button (click)="logOut()">Logout</button>
+                <button (click)="checkExpired()">Is expired</button>
+                <button (click)="checkTokenData()">Check Data</button>
+
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<!-- Start Product Area -->
+<div class="product-area section animate__animated animate__fadeIn">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title section-title-2">
+                    <h2>{{categoryName}} Category</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product-info">
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Start Single Tab -->
+                        <div class="tab-pane fade show active" id="man" role="tabpanel">
+                            <div class="tab-single">
+                                <div class="row">
+                                    <div *ngIf="isProductLoading">
+                                        <!-- Show loading indicator (e.g., spinner) -->
+                                        <p>Loading...</p>
+                                      </div>
+
+                                    <div *ngIf="!isProductLoading && products.length === 0; else productsList" class="col-12">
+                                        <p>No products available for this category.</p>
+                                    </div>
+
+                                    <ng-template #productsList>
+                                        <!-- start of on item -->
+                                        <div *ngFor="let product of products" class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a  href="javascript:void(0)">
+                                                        <img class="default-img" [src]="baseUrl + product.defaultImg" alt="#">
+                                                        <img class="hover-img" [src]="baseUrl + product.hoverImg" alt="#">
+
+                                                         <!-- Conditionally add spans based on isLabel -->
+                                                        <span *ngIf="product.isLabel && product.labelClass === 'out-of-stock'" class="out-of-stock">{{ product.label }}</span>
+                                                        <span *ngIf="product.isLabel && product.labelClass === 'new'" class="new">{{ product.label }}</span>
+                                                        <span *ngIf="product.isLabel && product.labelClass === 'price-dec'" class="price-dec">{{ product.label }}</span>
+                                                    </a>
+                                                    <div class="button-head">
+                                                        <div class="product-action">
+                                                            <a class="click-icon" title="Quick View" (click)="quickShop(product)"><i class="ti-eye"></i><span>Quick Shop</span></a>
+                                                            <!-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a> -->
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                            <a [class.bump]="isAddedToCart" (click)="addToCartHandler(product)" title="Add to cart">Add to cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="javascript:void(0)">{{ product.productName }}</a></h3>
+                                                    <div class="product-price">
+                                                        <span *ngIf="product.Discount" class="old">{{ product.discountPrice }}</span>
+                                                        <span>${{ product.productPrice }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of on item -->
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ End Single Tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End Product Area -->

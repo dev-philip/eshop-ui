@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+
+.click-icon{
+    cursor: pointer;
+}
+
+.product-name{
+    font-size: 14px;
+    font-weight: 700;
+   font-family: 'Roboto', sans-serif;
+  color: #3385ff;
+  
+  font-weight: bold;
+  text-align: center;
+  margin-left: 3px;
+
+}
+
+.orderBtn{
+    border-radius: 50px !important;
+}
+
+.promoCodeInput{
+
+}
+
+
+.redeemBtn{
+    padding: 5px !important;
+    /* width: 10px !important;
+    height: 10px !important; */
+}
+
+.custom-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .custom-input {
+    padding: 10px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .custom-input2 {
+    padding: 10px;
+    width: 93%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+

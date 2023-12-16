@@ -1,0 +1,97 @@
+<!-- Cart Details Area -->
+<div class="cart-details-area section animate__animated animate__fadeIn">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title section-title-2">
+                    <h2>Shopping Cart</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-item-contain">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-8 cart">
+                        <div class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-1 click-icon"><i class="fa fa-trash-o" aria-hidden="true" (click)="deleteItemInCartHandler('64734vr')"></i></div>
+                                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Shirt</div>
+                                    <div class="row">Cotton T-shirt</div>
+                                </div>
+                                <div class="col">
+                                    <a class="incrementBtn" title="Decrement Item" (click)="decrementItemInCartHandler('64734vr')">
+                                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="border">1</a>
+                                    <a class="decrementBtn" title="Increment Item" (click)="incrementItemInCartHandler('64734vr')">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col">&dollar; 144.00</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row main align-items-center">
+                                <div class="col-1 click-icon"><i class="fa fa-trash-o" aria-hidden="true" (click)="deleteItemInCartHandler('64734vr')"></i></div>
+                                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Shirt</div>
+                                    <div class="row">Cotton T-shirt</div>
+                                </div>
+                                <div class="col">
+                                    <a class="incrementBtn" title="Decrement Item" (click)="decrementItemInCartHandler('64734vr')">
+                                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="border">1</a>
+                                    <a class="decrementBtn" title="Increment Item" (click)="incrementItemInCartHandler('64734vr')">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col">&dollar; 50.00 </div>
+                            </div>
+                        </div>
+                        <div class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-1 click-icon"><i class="fa fa-trash-o" aria-hidden="true" (click)="deleteItemInCartHandler('64734vr')"></i></div>
+                                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Shirt</div>
+                                    <div class="row">Cotton T-shirt</div>
+                                </div>
+                                <div class="col">
+                                    <a class="incrementBtn" title="Decrement Item" (click)="decrementItemInCartHandler('64734vr')">
+                                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="border">1</a>
+                                    <a class="decrementBtn" title="Increment Item" (click)="incrementItemInCartHandler('64734vr')">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col">&dollar; 27.00 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 summary">
+                        <div><h5><b>Summary</b></h5></div>
+                        <hr>
+                        <div class="row">
+                            <div class="col" style="padding-left:0;">3 ITEMS</div>
+                            <div class="col text-right">&dollar; 132.00</div>
+                        </div>
+                        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                            <div class="col">TOTAL PRICE</div>
+                            <div class="col text-right">&dollar; 137.00</div>
+                        </div>
+                        <button class="btn" routerLink="/checkout">CHECKOUT</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- End Cart Details Area -->

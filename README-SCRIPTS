@@ -1,0 +1,41 @@
+ng generate component xyz
+ng generate component CheckoutPage 
+ng generate service product-list
+
+ng generate component CartModal
+ng generate component ViewItemModal
+
+
+ng generate component LoginModal
+ng generate component SignupModal
+
+
+ng generate service cart-modal
+ng generate service view-item-modal
+
+ng generate service login-modal
+
+ng generate service category-service
+
+ng generate service order
+
+ng generate service signup-modal
+
+ng generate service speech
+
+ng generate component ProductPage
+ng generate component Account
+ng generate component CartDetailsPage
+
+ng generate component ProductDetailsModal
+
+ng generate component LoginPage
+ng generate component SignupPage
+ng generate component ForgetPasswordPage
+ng generate component ResetPasswordPage
+ng generate component TestPage
+ng generate component TestPage2
+
+
+ng generate component WishlistPage
+ng generate component CatalogPage

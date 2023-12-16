@@ -1,0 +1,46 @@
+<div *ngIf="(productsInCart$ | async) as cartItems; else emptyCart">
+    <div [class.bump]="isAddedToCart">
+     <!-- <a class="single-icon" [ngClass]="{'active': isButtonClicked}" [@cartBump]="cartBumpState"><i class="ti-bag"></i> <span class="total-count">{{ cartItems.length }}</span></a> -->
+     <a class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ noOfItemInCart }}</span></a>
+    </div>
+
+    <div class="shopping-item" >
+    <div class="dropdown-cart-header">
+      <span>{{ noOfItemInCart }} Items</span>
+      <a [routerLink]="'/cart-items'" *ngIf="cartItems.length > 0">View Cart</a> <!-- Make it invisible if the cart is empty -->
+    </div>
+    <ul class="shopping-list">
+      <li *ngFor="let item of cartItems">
+        <a class="remove" title="Remove this item" (click)="removeFromCartHandler(item.productId)"><i class="fa fa-remove"></i></a>
+        <div>
+            <a class="incrementBtn" title="Decrement Item" (click)="decrementItemInCartHandler(item.productId)">
+                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+            </a>
+            <a class="decrementBtn" title="Increment Item" (click)="incrementItemInCartHandler(item.productId)">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <a class="cart-img"><img [src]="baseUrl + item.cartImg" [alt]="item.productName"></a>
+        <h4><a>{{ item.productName }}</a></h4>
+        <p class="quantity">{{ item.quantity }}x - <span class="amount">${{ item.productPrice }}</span></p>
+      </li>
+    </ul>
+    <div class="bottom">
+      <div class="total">
+        <span>Total</span>
+        <span class="total-amount">
+          {{ cartItems.length > 0 ? getTotalPrice(cartItems) : '$0.00' }}
+        </span>
+      </div>
+      <button type="button" class="btn checkout-btn animate" (click)="checkoutHandler()" [disabled]="cartItems.length === 0">
+        Checkout
+      </button> <!-- Disable the button if the cart is empty -->
+    </div>
+    </div>
+  
+</div>
+
+<ng-template #emptyCart>
+    <!-- Display a message when the cart is empty -->
+    <p>Your cart is empty.</p> 
+  </ng-template>
